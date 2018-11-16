@@ -1,10 +1,10 @@
-const mongoose = require('../db/connections')
+const mongoose = require('../db/connection')
 const Schema = mongoose.Schema
 
 const Trip = new Schema({
     title: String,
-    description: String,
-    date:String ,
+    notes: String,
+    date: String,
     location:String,
     weather:String, 
     equipment:[{

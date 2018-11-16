@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const Trip = require('../models/Trip')
 const Equipment = require('../models/Equipment')
-const mongoose = require('./connections')
+const mongoose = require('./connection')
 
 const Camera = new Equipment({
     title: 'Camera',
@@ -17,11 +17,11 @@ const Tent = new Equipment({
 })
 
 const Red_moutain = new Trip({
-    title: String,
-    description: String,
-    date:String ,
-    location:String,
-    weather:String, 
+    title: "Red Mountain",
+    notes: "Beware of greased up deaf guy"  ,
+    date:"12/31/1988",
+    location: "50 Lodge Rd SE, Cartersville, GA 30121",
+    weather:"Rainy", 
     equipment:[Camera,Tent]
 })
 
