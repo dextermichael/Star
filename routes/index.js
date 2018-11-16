@@ -15,40 +15,40 @@ router.get('/', applicationController.index)
 
 
 //User controller 
-router.get('/user',userController.index)
+router.get('api/user',userController.index)
 // 
-router.get('/user/new',userController.new)
+router.get('api/user/new',userController.new)
 //show
-router.get('/user/:id',userController.show)
+router.get('api/user/:id',userController.show)
 //
-router.get('/user/:id/edit',userController.edit)
+router.get('api/user/:id/edit',userController.edit)
 //create
-router.post('/user',userController.create)
+router.post('api/user',userController.create)
 // delete
-router.delete('/user/:id',userController.delete)
+router.delete('api/user/:id',userController.delete)
 // update
-router.patch('/user/:id',userController.update)
+router.patch('api/user/:id',userController.update)
 
 
 // //Skill
 
-router.get ('/trip',tripController.index)
-router.get ('/trip/new',tripController.new)
-router.get ('/trip/:id',tripController.show)
-router.get('/trip/:id/edit',tripController.edit) 
-router.post('/trip',tripController.create) 
-router.patch('/trip/:id',tripController.update)
-router.delete('/trip/:id',tripController.delete)
+router.get ('api/trip',tripController.index)
+router.get ('api/trip/new',tripController.new)
+router.get ('api/trip/:id',tripController.show)
+router.get('api/trip/:id/edit',tripController.edit) 
+router.post('api/trip',tripController.create) 
+router.patch('api/trip/:id',tripController.update)
+router.delete('api/trip/:id',tripController.delete)
 
 
 // //task
 
-router.get('/equipment',equipmentController.index)
-router.get ('/equipment/new',equipmentController.new)
-router.get ('/equipment/:id',equipmentController.show)
-router.post('/equipment',equipmentController.create) 
-router.get('/equipment/:id/edit',equipmentController.edit) 
-router.patch('/equipment/:id',equipmentController.update)
+router.get('api/equipment',equipmentController.index)
+router.get ('api/equipment/new',equipmentController.new)
+router.get ('api/equipment/:id',equipmentController.show)
+router.post('api/equipment',equipmentController.create) 
+router.get('api/equipment/:id/edit',equipmentController.edit) 
+router.patch('api/equipment/:id',equipmentController.update)
 
 
 
