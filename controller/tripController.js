@@ -7,13 +7,14 @@ const tripController = {
         const userId = req.params.userId; // 
         User.findbyId(userId) // calling specific user info  Find specific user
         .populate("trips") 
-            .then(users => {
-                res.send(users.trips)
+            .then(user => {
+                res.send(user.trips)
             })
     },
     show: (req, res) => {
         const tripsId = req.params.tripsId; // Making it neat 
         Trip.findById(tripsId)
+        .populate("equipment")
             .then(trips => {
                 res.send(trips)
             })
@@ -27,7 +28,8 @@ const tripController = {
             })
     },
     delete: (req, res) => {
-        User.findByIdAndDelete(req.params.userId)
+        const tripsId = req.params.tripsId;
+        Trip.findByIdAndRemove(tripsId)
             .then(() => {
                 res.send(200)
             })
