@@ -29,7 +29,7 @@ const Red_moutain = new Trip({
 const Dexter = new User({
     username: 'dexter',
     password: 'spaceiscool',
-    trip: [Red_moutain]
+    trips: [Red_moutain]
 })
 
 User.remove({})
