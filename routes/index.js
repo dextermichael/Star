@@ -24,11 +24,11 @@ router.patch('/api/user/:userId', userController.update)
 
 // // //Trip
 
-// router.get('/api/user/:userId/trip', tripController.index)
-// router.get('/api/user/:userId/trip/:tripId', tripController.show)
-// router.post('/api/user/:userId/trip', tripController.create)
-// router.patch('/api/user/:userId/trip/:tripId', tripController.update)
-// router.delete('/api/user/:userId/trip/:tripId', tripController.delete)
+router.get('/api/user/:userId/trip', tripController.index)
+router.get('/api/user/:userId/trip/:tripId', tripController.show)
+router.post('/api/user/:userId/trip', tripController.create)
+router.patch('/api/user/:userId/trip/:tripId', tripController.update)
+router.delete('/api/user/:userId/trip/:tripId', tripController.delete)
 
 
 // // //Equipment

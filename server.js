@@ -4,10 +4,10 @@ const app = express();
 const routes = require('./routes/index')
 
 
-app.use(bodyParser.json());
-app.get('/', (req, res) => {
-  res.send('Hello world!')
-})
+// app.use(bodyParser.json());
+// app.get('/', (req, res) => {
+//   res.send('Hello world!')
+// })
 
 
 app.use(express.static(__dirname + '/client/build/'));

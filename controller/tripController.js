@@ -5,7 +5,7 @@ const Trip = require("../models/Trip")
 const tripController = {
     index: (req, res) => {
         const userId = req.params.userId; // 
-        User.findbyId(userId) // calling specific user info  Find specific user
+        User.findById(userId) // calling specific user info  Find specific user
         .populate("trips") 
             .then(user => {
                 res.send(user.trips)
