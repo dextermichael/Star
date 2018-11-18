@@ -9,6 +9,9 @@ const routes = require('./routes/index')
 //   res.send('Hello world!')
 // })
 
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
 
 app.use(express.static(__dirname + '/client/build/'));
 app.get('/', (req, res) => {
