@@ -6,7 +6,7 @@ const NavBarStyles = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #457B9D;
+  background: grey;
   height: 50px;
   
   a {
@@ -28,9 +28,9 @@ class NavBar extends Component {
     render() {
         return (
             <NavBarStyles id="nav-container" class="some-class">
-                <Link to="/">Trip Page</Link>
+                <Link to="/">Home</Link>
                 <div className="right">
-                    <Link to="/login">Log-In</Link>
+                    <Link to="/login">Sign Up</Link>
                 </div>
 
             </NavBarStyles>

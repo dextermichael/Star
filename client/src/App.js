@@ -13,7 +13,7 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: #A8DADC;
+    background: black;
   }
 `
 
@@ -26,10 +26,10 @@ class App extends Component {
           <NavBar />
           <Switch>
             <Route exact path="/login" component={LogInPage}/>
-            <Route exact path="/users/:userId" component={TripPage}/>
+            <Route exact path="/user/:userId" component={TripPage}/>
             <Route path="/" component={HomePage}/>
           </Switch>
-          <h6>Below</h6>
+         
         </div>
       </Router>
     );
