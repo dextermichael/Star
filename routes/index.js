@@ -33,11 +33,11 @@ router.delete('/api/user/:userId/trip/:tripId', tripController.delete)
 
 // // //Equipment
 
-// router.get('/api/user/:userId/trip/equipment', equipmentController.index)
-// router.get('/api/user/:userId/trip/equipment/:equipmentId', equipmentController.show)
-// router.post('/api/user/:userId/trip/equipment', equipmentController.create)
-// router.patch('/api/user/:userId/trip/equipment/:equipmentId', equipmentController.update)
-// router.delete('/api/user/:userId/trip/equipment/:equipmentId', equipmentController.delete)
+// router.get('/api/user/:userId/trip/:tripId/equipment', equipmentController.index)
+router.get('/api/user/:userId/trip/:tripId/equipment/:equipmentId', equipmentController.show)
+// router.post('/api/user/:userId/trip/:tripId/equipment', equipmentController.create)
+// router.patch('/api/user/:userId/trip/:tripId/equipment/:equipmentId', equipmentController.update)
+// router.delete('/api/user/:userId/trip/:tripId/equipment/:equipmentId', equipmentController.delete)
 
 
 

@@ -12,15 +12,16 @@ const tripController = {
             })
     },
     show: (req, res) => {
-        const tripsId = req.params.tripsId; // Making it neat 
+        const tripsId = req.params.tripId; // Making it neat 
         Trip.findById(tripsId)
         .populate("equipment")
             .then(trips => {
+                console.log(trips)
                 res.send(trips)
             })
     },
     update: (req, res) => {
-        const tripsId = req.params.tripsId;
+        const tripsId = req.params.tripId;
         Trip.findByIdAndUpdate(tripsId,req.body, {new: true})
             .then((updatedTrip) => {
                 updatedTrip.save()
@@ -28,7 +29,7 @@ const tripController = {
             })
     },
     delete: (req, res) => {
-        const tripsId = req.params.tripsId;
+        const tripsId = req.params.tripId;
         Trip.findByIdAndRemove(tripsId)
             .then(() => {
                 res.send(200)
