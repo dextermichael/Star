@@ -37,7 +37,7 @@ class LogInPage extends Component {
   }
 
   getAllUsers = () => {
-    axios.get('/api/usergit').then((res) => {
+    axios.get('/api/user').then((res) => {
       this.setState({users: res.data})
     })
   }
