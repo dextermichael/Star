@@ -4,7 +4,7 @@ class TripPage extends Component {
     render() {
         return (
             <div>
-                
+                <p>Trip</p>
             </div>
         );
     }
