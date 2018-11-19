@@ -1,13 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./routes/index')
 
-
-// app.use(bodyParser.json());
-// app.get('/', (req, res) => {
-//   res.send('Hello world!')
-// })
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
