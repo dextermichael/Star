@@ -12,6 +12,7 @@ class SignUpForm extends Component {
     const {name, value} = event.target
     this.setState({[name]: value})
   }
+  // make sure it dosent refresh entire page
   handleSubmit = (event) => {
     event.preventDefault()
 
@@ -28,7 +29,8 @@ class SignUpForm extends Component {
     return (
       <div>
         <h3>Sign-Up</h3>
-        <form onSubmit={this.handleSubmit}>
+       
+        <form onSubmit={this.handleSubmit}> 
           <div>
             <label htmlFor="username">User Name: </label>
             <input onChange={this.handleChange} value={this.state.username} type="text" name="username"/>

@@ -24,11 +24,11 @@ class LogInPage extends Component {
   render() {
     return (
       <div>
-        <h1>Log-In To See Your Ideas</h1>
+        <h1>Plan your trip</h1>
         <h3>All Users: </h3>
         { this.state.users.map((user) => (
           <div key={user._id}>
-            <Link to={`/users/${user._id}`}>{user.username}</Link>
+            <Link to={`/user/${user._id}`}>{user.username}</Link>
           </div>
         )) }
 

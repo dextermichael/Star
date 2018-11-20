@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom'
 import LogInPage from './components/LogInPage'
 import HomePage from './components/HomePage'
 import TripPage from './components/TripPage'
 import NavBar from './components/NavBar'
+import UserPage from './components/UserPage'
 import { createGlobalStyle } from 'styled-components'
 
 const Global = createGlobalStyle`
@@ -28,6 +29,8 @@ class App extends Component {
             <Route exact path="/login" component={LogInPage}/>
             <Route exact path="/user/:userId" component={TripPage}/>
             <Route path="/" component={HomePage}/>
+            <Route exact path ="/user" component={UserPage}/>
+
           </Switch>
          
         </div>

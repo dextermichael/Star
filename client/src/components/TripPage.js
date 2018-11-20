@@ -22,7 +22,8 @@ const TripsContainerStyle = styled.div`
 class TripPage extends Component {
   state = {
     user: {},
-    trips: [[]]
+    trips: [],
+    equipment:[]
   }
 
   componentDidMount() {
@@ -34,7 +35,7 @@ class TripPage extends Component {
     // On the server URL is '/api/users/:userId'
     const userId = this.props.match.params.userId
     axios.get(`/api/user/${userId}`).then(res => {
-      if(res.data.ideas === undefined) {
+      if(res.data.trip === undefined) {
         this.setState({
           user: res.data,
           trips: ["You don't have any trips yet"]
@@ -64,13 +65,13 @@ class TripPage extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.user.username}Trip Page</h1>
+        <h1>{this.state.user.username} Trip Page</h1>
         <NewTripButton onClick={this.handleCreateNewTrip}>
           New Trips
         </NewTripButton>
         <TripsContainerStyle>
           {this.state.trips.map(trip => (
-            <Trip getAllTrips={this.getAllTrips} key={trip._id} trip={trip}/>
+            <Trip getAllTrips={this.getAllTrips} key={trip._id} trip={trip} {...this.props}/>
           ))}
         </TripsContainerStyle>
       </div>
