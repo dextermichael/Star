@@ -7,29 +7,10 @@ class Trip extends Component {
     title: '',
     notes: '',
     date: '',
-    location: '',
-    weather: '',
-    equipment: []
+    location:'',
+    weather:'', 
+    equipment:[]
 
-  }
-
-  componentDidMount() {
-    this.props.getAllTrips()
-  }
-  
-  getAllTrips = () => {
-    const userId = this.props.match.params.userId
-    const tripId = this.props.match.params.tripId
-       axios.get(`/api/user/${userId}/trip/`).then(res => {
-         console.log('hello')
-           console.log(res.data)
-           this.setState({
-               user: res.data,
-               trips: res.data.trips
-            })
-        }).catch((err) => {
-          console.log(err)
-        })
   }
 
   handleChange = (event) => {
@@ -39,13 +20,13 @@ class Trip extends Component {
 
 
   handleDelete = () => {
-    axios.delete(`/api/trips/${this.state._id}`).then(() => {
+    axios.delete(`/api/trip/${this.state._id}`).then(() => {
       this.props.getAllTrips()
     })
   }
 
    handleUpdate = () => {
-    axios.patch(`/api/trips/${this.state._id}`, this.state).then(() => {
+    axios.patch(`/api/trip/${this.state._id}`, this.state).then(() => {
       console.log("Updated Trip")
     })
   }
@@ -53,30 +34,26 @@ class Trip extends Component {
    return (
       <div>
         
+       
+
+
        <form>
          <div>
          <label htmlFor ="title">Title</label>
-         <input onChange={this.handleChange} placeholder={this.state.username}   value ={this.state.title} type ="text" name="title"/>
+         <input onChange={this.handleChange} placeholder={this.state.title} value ={this.state.title} type ="text" name="title"/>
+         </div>
+        </form>
+
+         <input onBlur={this.handleUpdate}
+          onChange={this.handleChange}
+          type="text" name="date"
+          value={this.state.date}
+        />
+
+         <button onClick={this.handleDelete}>X</button>
          </div>
 
-         <div>
-         <label htmlFor ="location">Location</label>
-         <input onChange={this.handleChange} value ={this.state.location} type ="text" name="location"/>
-         </div>
-         <div>
-         <label htmlFor ="location">Date</label>
-         <input onChange={this.handleChange} value ={this.state.date} type ="text" name="date"/>
-         </div>
-         <div>
-         <label htmlFor ="location">Weather</label>
-         <input onChange={this.handleChange} value ={this.state.weather} type ="text" name="Weather"/>
-         </div>
-         <div>
-         <label htmlFor ="location">Notes</label>
-         <input onChange={this.handleChange} value ={this.state.notes} type ="text" name="notes"/>
-         </div>
-         </form>
-         </div>
+          
       
     )
   }

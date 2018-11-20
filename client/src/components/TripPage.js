@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import Trip from './Trip'
+import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 // Need info about a user
 // Need info about that users ideas
 
@@ -61,10 +62,30 @@ class TripPage extends Component {
       weather: 'weather',
       equipment: []
     }
-    axios.post(`/api/user/${userId}/trips`, payload).then(res => {
+    axios.post(`/api/user/${userId}/trip`, payload).then(res => {
       const newTrips = res.data
       const newStateTrips = [...this.state.trips, newTrips]
       this.setState({ trips: newStateTrips })
+    })
+  }
+  handleChange = (event) => {
+    const { value, name } = event.target
+    this.setState({ [name]: value })
+  }
+
+  
+
+  handleDelete = (e) => {
+    e.preventDefault()
+    axios.delete(`/api/trip/${this.state._id}`).then(() => {
+     
+      this.props.getAllTrips()
+    })
+  }
+
+   handleUpdate = () => {
+    axios.patch(`/api/trip/${this.state._id}`, this.state).then(() => {
+      console.log("Updated Trip")
     })
   }
 
@@ -77,14 +98,24 @@ class TripPage extends Component {
         </NewTripButton>
         <TripsContainerStyle>
           {this.state.trips.map((trip) => (
-            <div>
-              {console.log(trip)}
-              <div>{trip.title}</div>
-              <div>{trip.location}</div>
-              <div>{trip.notes}</div>
-              <div>{trip.weather}</div>
-              <div>{trip.date}</div>
-              <Trip getAllTrips={this.getAllTrips} trips={this.state.trips} key={trip._id} trip={trip} {...this.props} />
+            <div key={trip._id}>
+
+            <form onSubmit>
+            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="title" placeholder={trip.title} />
+            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="location" placeholder={trip.location} />
+            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="notes" placeholder={trip.notes} />
+            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="weather" placeholder={trip.weather} />
+            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="date" placeholder={trip.date}/>
+              <button onClick={this.handleDelete}>delete</button>
+</form>
+
+
+
+
+
+              
+              
+            
             </div>
           ))}
         </TripsContainerStyle>
