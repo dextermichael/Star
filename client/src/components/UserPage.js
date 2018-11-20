@@ -18,13 +18,17 @@ class UserPage extends Component {
       }
     render() {
         return (
+
+            
             <div>
+
+                <h1>User Page</h1>
             { this.state.users.map((user) => (
                 <div key={user._id}>
                   <Link to={`/user/${user._id}`}>{user.username}</Link>
                 </div>
               )) }
-            </div>
+    </div>
         );
     }
 }

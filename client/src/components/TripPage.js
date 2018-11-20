@@ -23,37 +23,43 @@ class TripPage extends Component {
   state = {
     user: {},
     trips: [],
-    equipment:[]
+    equipment: []
   }
 
   componentDidMount() {
+    this.getAllUsers()
     this.getAllTrips()
   }
 
-  getAllTrips = () => {
-    // make an api call to get one single user
-    // On the server URL is '/api/users/:userId'
+  getAllUsers = () => {
     const userId = this.props.match.params.userId
-    axios.get(`/api/user/${userId}`).then(res => {
-      if(res.data.trip === undefined) {
+    axios.get(`/api/user/${userId}`).then((res) => {
+      console.log(res.data)
+      this.setState({user: res.data})
+    })
+  }
+
+  getAllTrips = () => {
+    // make an api call to get one single user's trips
+    // On the server URL is '/api/users/:userId/trip'
+    const userId = this.props.match.params.userId
+    axios.get(`/api/user/${userId}/trip`).then(res => {
+      console.log(res.data)
         this.setState({
-          user: res.data,
-          trips: ["You don't have any trips yet"]
+          trips: res.data,
         })
-      } else {
-        this.setState({
-          user: res.data,
-          trips: res.data.ideas
-        })
-      }
     })
   }
 
   handleCreateNewTrip = () => {
     const userId = this.props.match.params.userId
     const payload = {
-      title: 'trip Title',
-      description: 'Trip Description'
+      title: 'Trip Title',
+      notes: 'no title',
+      date: 'date',
+      location: 'location',
+      weather: 'weather',
+      equipment: []
     }
     axios.post(`/api/user/${userId}/trips`, payload).then(res => {
       const newTrips = res.data
@@ -70,8 +76,16 @@ class TripPage extends Component {
           New Trips
         </NewTripButton>
         <TripsContainerStyle>
-          {this.state.trips.map(trip => (
-            <Trip getAllTrips={this.getAllTrips} key={trip._id} trip={trip} {...this.props}/>
+          {this.state.trips.map((trip) => (
+            <div>
+              {console.log(trip)}
+              <div>{trip.title}</div>
+              <div>{trip.location}</div>
+              <div>{trip.notes}</div>
+              <div>{trip.weather}</div>
+              <div>{trip.date}</div>
+              <Trip getAllTrips={this.getAllTrips} trips={this.state.trips} key={trip._id} trip={trip} {...this.props} />
+            </div>
           ))}
         </TripsContainerStyle>
       </div>

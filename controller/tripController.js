@@ -39,7 +39,7 @@ const tripController = {
         const userId = req.params.userId;
         User.findById(userId).then(user => {
             Trip.create(req.body).then(newTrip =>{
-                user.trips.push(newGame);
+                user.trips.push(newTrip);
                 user.save();
                 res.send(newTrip);
             });
