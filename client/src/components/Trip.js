@@ -20,8 +20,11 @@ class Trip extends Component {
 
 
   handleDelete = () => {
-    axios.delete(`/api/trip/${this.state._id}`).then(() => {
-      this.props.getAllTrips()
+    const userId = this.props.match.params.userId
+    const tripId = this.props.match.params.tripId
+    
+    axios.delete(`api/user/${userId}/trip/${tripId}`).then(() => {
+      this.componentDidMount()
     })
   }
 
@@ -30,6 +33,8 @@ class Trip extends Component {
       console.log("Updated Trip")
     })
   }
+
+
   render() {
    return (
       <div>

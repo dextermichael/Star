@@ -25,8 +25,7 @@
     "concurrently": "^4.0.1",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
-    "mongoose": "^5.3.12",
-    "reactstrap": "^6.5.0"
+    "mongoose": "^5.3.12"
   },
   "engines": {
     "node": "10.13.0"

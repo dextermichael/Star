@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import Trip from './Trip'
+
 import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 // Need info about a user
 // Need info about that users ideas
@@ -36,7 +36,7 @@ class TripPage extends Component {
     const userId = this.props.match.params.userId
     axios.get(`/api/user/${userId}`).then((res) => {
       console.log(res.data)
-      this.setState({user: res.data})
+      this.setState({ user: res.data })
     })
   }
 
@@ -46,9 +46,9 @@ class TripPage extends Component {
     const userId = this.props.match.params.userId
     axios.get(`/api/user/${userId}/trip`).then(res => {
       console.log(res.data)
-        this.setState({
-          trips: res.data,
-        })
+      this.setState({
+        trips: res.data,
+      })
     })
   }
 
@@ -68,23 +68,38 @@ class TripPage extends Component {
       this.setState({ trips: newStateTrips })
     })
   }
-  handleChange = (event) => {
+  handleChange = (event, tripId) => {
     const { value, name } = event.target
-    this.setState({ [name]: value })
+    const newTrips =[...this.state.trips]
+    const mapTrip = newTrips.map(trip =>{
+      if (trip._id === tripId){
+      trip[name] = value 
+      }
+      return trip
+    })
+    this.setState({ trips:mapTrip })
   }
 
-  
 
-  handleDelete = (e) => {
-    e.preventDefault()
-    axios.delete(`/api/trip/${this.state._id}`).then(() => {
-     
-      this.props.getAllTrips()
+
+  handleDelete = (tripId) => {
+    console.log(tripId)
+    const userId = this.props.match.params.userId
+    axios.delete(`/api/user/${userId}/trip/${tripId}`).then(() => {
+    const newTrips = [...this.state.trips]
+    const filterTrip = newTrips.filter(trip =>{
+      return trip._id !== tripId
+    })
+
+    this.setState({trips: filterTrip})
     })
   }
-
-   handleUpdate = () => {
-    axios.patch(`/api/trip/${this.state._id}`, this.state).then(() => {
+  handleUpdate = (tripId) => {
+    const userId = this.props.match.params.userId
+    const findTrip = this.state.trips.find(trip =>{
+      return trip._id === tripId
+    })
+    axios.patch(`/api/user/${userId}/trip/${tripId}`, findTrip).then(() => {
       console.log("Updated Trip")
     })
   }
@@ -100,22 +115,20 @@ class TripPage extends Component {
           {this.state.trips.map((trip) => (
             <div key={trip._id}>
 
-            <form onSubmit>
-            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="title" placeholder={trip.title} />
-            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="location" placeholder={trip.location} />
-            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="notes" placeholder={trip.notes} />
-            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="weather" placeholder={trip.weather} />
-            <Input onBlur={this.handleUpdate} type="text" onChange={this.handleChange} name="date" placeholder={trip.date}/>
-              <button onClick={this.handleDelete}>delete</button>
-</form>
+                <Input onBlur={ () => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="title" value={trip.title} />
+                <Input onBlur={ () => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="location" value={trip.location} />
+                <Input onBlur={() => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="notes" value={trip.notes} />
+                <Input onBlur={() => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="weather" value={trip.weather} />
+                <Input onBlur={() => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="date" value={trip.date} />
+                <button onClick={() => this.handleDelete(trip._id)}>delete</button>
 
 
 
 
 
-              
-              
-            
+
+
+
             </div>
           ))}
         </TripsContainerStyle>
