@@ -52,11 +52,25 @@ class UserPage extends Component {
 
 
         <UserStyle>
-          {this.state.users.map((user) => (
+        <div>
+            <Card>
+              <CardTitle > 
+                <CardSubtitle>
+                  <CardBody>
+                    <img width="100%" src="https://imgur.com/GGcR1nw"/>
+                  {this.state.users.map((user) => (
             <div key={user._id}>
               <Link to={`/user/${user._id}`}>{user.username}</Link>
             </div>
           ))}
+                    
+                  </CardBody>
+                </CardSubtitle>
+              </CardTitle>
+            </Card>
+
+          </div>
+         
         </UserStyle>
       </div>
     );

@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import SignUpForm from './SignUpForm'
+import styled from 'styled-components'
 
-// TODO: SHOW ALL USERS
-// TODO: CREATE FORM TO CREATE USER
+const Postion = styled.div`
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+  display: flex;
+  justify-content: center;
+  font-family: 'Amatic SC', cursive;
+  `
+
+
 
 class LogInPage extends Component {
   state = {
@@ -24,13 +31,10 @@ class LogInPage extends Component {
   render() {
     return (
       <div>
+        <Postion>
         <h1>Plan your trip</h1>
-        <h3>All Users: </h3>
-        { this.state.users.map((user) => (
-          <div key={user._id}>
-            <Link to={`/user/${user._id}`}>{user.username}</Link>
-          </div>
-        )) }
+        </Postion>
+        
 
         <SignUpForm />
       </div>

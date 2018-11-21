@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import styled from 'styled-components'
+
+
+const Postion = styled.div`
+display: flex;
+  justify-content: center;
+  `
 
 class SignUpForm extends Component {
   state = {
@@ -28,22 +36,33 @@ class SignUpForm extends Component {
   render() {
     return (
       <div>
+
+      <Postion>
         <h3>Sign-Up</h3>
+        </Postion>
        
-        <form onSubmit={this.handleSubmit}> 
-          <div>
-            <label htmlFor="username">User Name: </label>
-            <input onChange={this.handleChange} value={this.state.username} type="text" name="username"/>
-          </div>
-          <div>
-            <label htmlFor="password">Password: </label>
-            <input onChange={this.handleChange} value={this.state.password} type="password" name="password"/>
-          </div>
-          <button type="submit">Create User</button>
-        </form>
+       <Postion>
+        <Form onSubmit={this.handleSubmit}  > 
+          <FormGroup>
+            <Label htmlFor="username">User Name: </Label>
+            <Input onChange={this.handleChange} value={this.state.username} type="text" name="username"/>
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="password">Password: </Label>
+            <Input onChange={this.handleChange} value={this.state.password} type="password" name="password"/>
+          </FormGroup>
+          <Button color="danger" type="submit">Create User</Button>
+        </Form>
+        </Postion>
       </div>
+
+
+
+
+
     );
-  }
+
+}
 }
 
 export default withRouter(SignUpForm);

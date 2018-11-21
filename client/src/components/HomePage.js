@@ -3,12 +3,11 @@ import Carousel from '../components/Carousel'
 import styled from 'styled-components'
 
 const Slide = styled.div`
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 display: flex;
 justify-content: center;
- background: #1d3557;
-  color: white;
-  font-size: 1.3rem;
-  padding: 7.5px 5px;
+font-family: 'Amatic SC', cursive;
+ 
 `
 
 class HomePage extends Component {
@@ -16,10 +15,15 @@ class HomePage extends Component {
     return (
       <div>
 
-
+ <Slide>
         <h1>Star Tracker</h1>
+        </Slide>
+
+
+        <Slide>
 
         <Carousel/>
+        </Slide>
       </div>
     );
   }
