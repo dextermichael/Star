@@ -116,7 +116,10 @@ class TripPage extends Component {
   render() {
     return (
       <div>
+
+        <Postion>
         <h1>{this.state.user.username} Trip Page</h1>
+        </Postion>
 <Postion>
         <TripButton onClick={this.handleCreateNewTrip}>
           New Trips
