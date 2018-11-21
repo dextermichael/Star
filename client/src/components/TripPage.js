@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button,Input } from 'reactstrap';
 
-import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-// Need info about a user
-// Need info about that users ideas
 
-const NewTripButton = styled.button`
-  background: #1d3557;
+
+
+const TripButton = styled.button`
+display: flex;
+justify-content: center;
+ background: #1d3557;
   color: white;
   font-size: 1.3rem;
   padding: 7.5px 5px;
@@ -108,27 +111,22 @@ class TripPage extends Component {
     return (
       <div>
         <h1>{this.state.user.username} Trip Page</h1>
-        <NewTripButton onClick={this.handleCreateNewTrip}>
+        <TripButton onClick={this.handleCreateNewTrip}>
           New Trips
-        </NewTripButton>
+        </TripButton>
         <TripsContainerStyle>
           {this.state.trips.map((trip) => (
             <div key={trip._id}>
-
+<Card>
+  <CardBody>
                 <Input onBlur={ () => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="title" value={trip.title} />
                 <Input onBlur={ () => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="location" value={trip.location} />
                 <Input onBlur={() => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="notes" value={trip.notes} />
                 <Input onBlur={() => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="weather" value={trip.weather} />
                 <Input onBlur={() => this.handleUpdate(trip._id)} type="text" onChange={(event) => this.handleChange(event, trip._id)} name="date" value={trip.date} />
                 <button onClick={() => this.handleDelete(trip._id)}>delete</button>
-
-
-
-
-
-
-
-
+    </CardBody>
+</Card>
             </div>
           ))}
         </TripsContainerStyle>

@@ -8,13 +8,13 @@ import UserPage from './components/UserPage'
 import { createGlobalStyle } from 'styled-components'
 
 const Global = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
   
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: black;
+    font-family: 'Amatic SC', cursive;
+    background: white;
   }
 `
 
