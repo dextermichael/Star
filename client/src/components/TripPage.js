@@ -4,7 +4,13 @@ import styled from 'styled-components'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button,Input } from 'reactstrap';
 
+  const Postion = styled.div`
 
+
+  display: flex;
+  justify-content: center;
+ 
+  `
 
 
 const TripButton = styled.button`
@@ -111,9 +117,12 @@ class TripPage extends Component {
     return (
       <div>
         <h1>{this.state.user.username} Trip Page</h1>
+<Postion>
         <TripButton onClick={this.handleCreateNewTrip}>
           New Trips
         </TripButton>
+        </Postion>
+
         <TripsContainerStyle>
           {this.state.trips.map((trip) => (
             <div key={trip._id}>
