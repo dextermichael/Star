@@ -4,10 +4,10 @@ A MERN Stack created to help Astrophotographers keep track of there journey.
  Erd
 
 
-![image of erd](images/erd.png)
+![image of erd](Images/erd.png)
 
 
 Wireframe 
 
 
-![image of WireFram](images/KeywireFrame.jpg)
+![image of WireFram](Images/KeywireFrame.jpg)
