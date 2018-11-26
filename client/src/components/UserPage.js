@@ -33,10 +33,29 @@ class UserPage extends Component {
       this.setState({ users: res.data })
     })
   }
+
+  
   //
   componentDidMount() {
     this.getAllUsers()
+   }
+
+   handleDelete = userId => {
+    // some unique value
+    axios.delete(`/api/user/${userId}`).then(() => {
+      
+      const newUser = [...this.state.user]
+     
+      const filtered = newUser.filter(user => {
+        return user._id !== userId 
+      })
+    
+      this.setState({user: filtered})
+    })
   }
+
+
+
 
 
 
@@ -60,6 +79,7 @@ class UserPage extends Component {
                   {this.state.users.map((user) => (
             <div key={user._id}>
               <Link to={`/user/${user._id}`}>{user.username}</Link>
+              <button onClick={() => this.handleDelete(user._id)}>delete</button>
             </div>
           ))}
                     
